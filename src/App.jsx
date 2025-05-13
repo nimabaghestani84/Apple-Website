@@ -2,6 +2,6 @@ import React from 'react'
 
 export default function App() {
   return (
-    <div className='bg-red-700'>App</div>
+    <div className='bg-gray-100'>App</div>
   )
 }
