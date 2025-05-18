@@ -1,5 +1,5 @@
 import React from 'react'
-import { appleImg } from '../utils'
+import { appleImg, bagImg, searchImg } from '../utils'
 
 export default function Navbar() {
   return (
@@ -13,6 +13,11 @@ export default function Navbar() {
                         {nav}
                     </div>
                 ))}
+            </div>
+
+            <div>
+                <img src={searchImg} alt="searchImg" width={18} height={18} />
+                <img src={bagImg} alt="bagImg" width={18} height={18} />
             </div>
         </nav>
     </header>
