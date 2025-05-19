@@ -3,8 +3,8 @@ import { appleImg, bagImg, searchImg } from '../utils'
 
 export default function Navbar() {
   return (
-    <header>
-        <nav>
+    <header className='w-full py-5 sm:px-10 px-5 flex justify-between items-center'>
+        <nav className='flex w-full screen-max-width'>
             <img src={appleImg} alt="apple logo" width={14} height={18} />
 
             <div>
