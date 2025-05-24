@@ -1,7 +1,11 @@
-import React from 'react'
+import gsap from 'gsap';
 
-export default function Hero() {
+
+const Hero = () => {
+  
   return (
-    <div>Hero</div>
+  
   )
 }
+
+export default Hero
