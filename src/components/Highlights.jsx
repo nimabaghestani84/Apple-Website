@@ -1,7 +1,12 @@
-import React from 'react'
 
-export default function Highlights() {
+
+const Highlights = () => {
+
   return (
-    <div>Highlights</div>
+    <section id="highlights" className="w-screen overflow-hidden h-full common-padding bg-zinc">
+      
+    </section>
   )
 }
+
+export default Highlights
