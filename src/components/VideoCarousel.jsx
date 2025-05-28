@@ -8,7 +8,21 @@ import { hightlightsSlides } from "../constants";
 import { pauseImg, playImg, replayImg } from "../utils";
 
 const VideoCarousel = () => {
+const videoRef = useRef([]);
+  const videoSpanRef = useRef([]);
+  const videoDivRef = useRef([]);
 
+  // video and indicator
+  const [video, setVideo] = useState({
+    isEnd: false,
+    startPlay: false,
+    videoId: 0,
+    isLastVideo: false,
+    isPlaying: false,
+  });
+
+  const [loadedData, setLoadedData] = useState([]);
+  const { isEnd, isLastVideo, startPlay, videoId, isPlaying } = video;
 
   return (
     <>
