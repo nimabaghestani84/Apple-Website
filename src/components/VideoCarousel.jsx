@@ -116,6 +116,35 @@ const videoRef = useRef([]);
           }
         }, [startPlay, videoId, isPlaying, loadedData]);
 
+        const handleProcess = (type, i) => {
+    switch (type) {
+      case "video-end":
+        setVideo((pre) => ({ ...pre, isEnd: true, videoId: i + 1 }));
+        break;
+
+      case "video-last":
+        setVideo((pre) => ({ ...pre, isLastVideo: true }));
+        break;
+
+      case "video-reset":
+        setVideo((pre) => ({ ...pre, videoId: 0, isLastVideo: false }));
+        break;
+
+      case "pause":
+        setVideo((pre) => ({ ...pre, isPlaying: !pre.isPlaying }));
+        break;
+
+      case "play":
+        setVideo((pre) => ({ ...pre, isPlaying: !pre.isPlaying }));
+        break;
+
+      default:
+        return video;
+    }
+  };
+
+  const handleLoadedMetaData = (i, e) => setLoadedData((pre) => [...pre, e]);
+
   return (
     <>
       <div className="flex items-center">
