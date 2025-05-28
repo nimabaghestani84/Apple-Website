@@ -13,7 +13,9 @@ const VideoCarousel = () => {
   return (
     <>
       <div className="flex items-center">
-     
+     {hightlightsSlides.map((list, i) => (
+              
+             ))}
       </div>
 
       <div className="relative flex-center mt-10">
