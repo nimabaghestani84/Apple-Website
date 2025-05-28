@@ -31,6 +31,21 @@ const videoRef = useRef([]);
       ease: "power2.inOut",
     });
 
+    gsap.to("#video", {
+          scrollTrigger: {
+            trigger: "#video",
+            toggleActions: "restart none none none",
+          },
+          onComplete: () => {
+            setVideo((pre) => ({
+              ...pre,
+              startPlay: true,
+              isPlaying: true,
+            }));
+          },
+        });
+      }, [isEnd, videoId]);
+
   return (
     <>
       <div className="flex items-center">
