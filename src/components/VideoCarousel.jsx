@@ -46,6 +46,76 @@ const videoRef = useRef([]);
         });
       }, [isEnd, videoId]);
 
+      useEffect(() => {
+          let currentProgress = 0;
+          let span = videoSpanRef.current;
+      
+          if (span[videoId]) {
+            let anim = gsap.to(span[videoId], {
+              onUpdate: () => {
+                const progress = Math.ceil(anim.progress() * 100);
+      
+                if (progress != currentProgress) {
+                  currentProgress = progress;
+      
+                  gsap.to(videoDivRef.current[videoId], {
+                    width:
+                      window.innerWidth < 760
+                        ? "10vw" // mobile
+                        : window.innerWidth < 1200
+                        ? "10vw" // tablet
+                        : "4vw", // laptop
+                  });
+      
+                  gsap.to(span[videoId], {
+                    width: `${currentProgress}%`,
+                    backgroundColor: "white",
+                  });
+                }
+              },
+      
+              onComplete: () => {
+                if (isPlaying) {
+                  gsap.to(videoDivRef.current[videoId], {
+                    width: "12px",
+                  });
+                  gsap.to(span[videoId], {
+                    backgroundColor: "#afafaf",
+                  });
+                }
+              },
+            });
+      
+            if (videoId == 0) {
+              anim.restart();
+            }
+      
+            const animUpdate = () => {
+              anim.progress(
+                videoRef.current[videoId].currentTime /
+                  hightlightsSlides[videoId].videoDuration
+              );
+            };
+      
+            if (isPlaying) {
+              // ticker to update the progress bar
+              gsap.ticker.add(animUpdate);
+            } else {
+              gsap.ticker.remove(animUpdate);
+            }
+          }
+        }, [videoId, startPlay]);
+      
+        useEffect(() => {
+          if (loadedData.length > 3) {
+            if (!isPlaying) {
+              videoRef.current[videoId].pause();
+            } else {
+              startPlay && videoRef.current[videoId].play();
+            }
+          }
+        }, [startPlay, videoId, isPlaying, loadedData]);
+
   return (
     <>
       <div className="flex items-center">
