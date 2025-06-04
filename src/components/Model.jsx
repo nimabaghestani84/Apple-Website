@@ -65,6 +65,7 @@ const Model = () => {
               <View.Port />
             </Canvas>
           </div>
+          
         </div>
       </div>
     </section>
