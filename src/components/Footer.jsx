@@ -10,6 +10,7 @@ const Footer = () => {
             
           </p>
           <p className="font-semibold text-gray text-xs">
+            Or call 000800-040-1966
           </p>
         </div>
 
