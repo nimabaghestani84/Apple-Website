@@ -6,6 +6,20 @@ import { explore1Img, explore2Img, exploreVideo } from "../utils";
 import gsap from "gsap";
 
 export default function Features() {
+  const videoRef = useRef();
+
+  useGSAP(() => {
+    gsap.to('#exploreVideo', {
+      scrollTrigger: {
+        trigger: '#exploreVideo',
+        toggleActions: 'play pause reverse restart',
+        start: '-10% bottom',
+      },
+      onComplete: () => {
+        videoRef.current.play();
+      }
+    })
+
   return (
     <section className="h-full common-padding bg-zinc relative overflow-hidden">
           <div className="screen-max-wdith">
